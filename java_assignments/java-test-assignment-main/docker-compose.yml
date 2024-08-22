@@ -1,0 +1,68 @@
+version: '3.7'
+
+services:
+  backups_db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - .docker/sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    networks:
+      default:
+
+  customer_db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=postgres123
+      - POSTGRES_PASSWORD=postgres123
+      - POSTGRES_DB=dsoifhasuo9fas70a9fu
+    volumes:
+      - client_data:/var/lib/postgresql/data
+      - .docker/sql/customer_database.sql:/docker-entrypoint-initdb.d/customer_database.sql
+    ports:
+      - "5433:5432"
+    networks:
+      default:
+  minio:
+    image: minio/minio
+    ports:
+      - '9000:9000'
+      - "9001:9001"
+    volumes:
+      - './miniodata:/data'
+    command: server --console-address ":9001" /data
+    networks:
+      default:
+
+  my_spring_boot_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9090:9090"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://backups_db:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      MINIO_URL: http://minio:9000
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    depends_on:
+      - backups_db
+      - customer_db
+      - minio
+    networks:
+      - default
+volumes:
+  miniodata:
+  postgres_data:
+  client_data:
+networks:
+  default:

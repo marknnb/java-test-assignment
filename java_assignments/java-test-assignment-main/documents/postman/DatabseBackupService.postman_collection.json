@@ -1,0 +1,519 @@
+{
+	"info": {
+		"_postman_id": "73fac178-e377-4fc3-8828-8555955438a4",
+		"name": "DatabseBackupService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "saveClient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/client",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"client"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200-OK-Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"credentials\": {\r\n        \"username\": \"postgres123\",\r\n        \"password\": \"postgres123\",\r\n        \"database\": \"dsoifhasuo9fas70a9fu\",\r\n        \"host\": \"customer_db\",\r\n        \"port\": \"5432\"\r\n    },\r\n    \"tariff\": \"FREE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/mendix/client",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"mendix",
+								"client"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 30 Apr 2024 14:53:56 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"250018\",\n    \"status\": \"OK\"\n}"
+				}
+			]
+		},
+		{
+			"name": "requestBackupByClientId",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"client_id\" : \"250006\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/backup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"backup"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200-OK-Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"client_id\" : \"250019\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/mendix/backup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"mendix",
+								"backup"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 01 May 2024 02:04:31 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"5000075\",\n    \"status\": \"IN_PROGRESS\",\n    \"start_date\": \"2024-05-01T02:04:31.943\"\n}"
+				},
+				{
+					"name": "404-NotFound-Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"client_id\" : \"2500190\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/mendix/backup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"mendix",
+								"backup"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 01 May 2024 02:06:39 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"01-05-2024 02:06:39\",\n    \"errorCode\": \"MNDX_BKP_001\",\n    \"errorMessage\": \"Client not found\",\n    \"status\": 404,\n    \"clientUrl\": \"uri=/mendix/backup\"\n}"
+				}
+			]
+		},
+		{
+			"name": "GetBackupClientIdAndBackupId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/backup/250006/5000012",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"backup",
+						"250006",
+						"5000012"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200-OK-Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/mendix/backup/250019/5000075",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"mendix",
+								"backup",
+								"250019",
+								"5000075"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 01 May 2024 02:05:05 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"5000075\",\n    \"status\": \"DONE\",\n    \"start_date\": \"2024-05-01T02:04:31.943\",\n    \"end_date\": \"2024-05-01T02:04:42.203\",\n    \"database_size\": \"4 MB\",\n    \"backup_time\": \"10 sec\"\n}"
+				},
+				{
+					"name": "404-NotFoundResponse",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/mendix/backup/250019/50000700",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"mendix",
+								"backup",
+								"250019",
+								"50000700"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 01 May 2024 02:07:13 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"01-05-2024 02:07:13\",\n    \"errorCode\": \"MNDX_BKP_002\",\n    \"errorMessage\": \"Backup not found\",\n    \"status\": 404,\n    \"clientUrl\": \"uri=/mendix/backup/250019/50000700\"\n}"
+				}
+			]
+		},
+		{
+			"name": "DownloadBackupClientIdAndBackupId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/backup/250006/5000012",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"backup",
+						"250006",
+						"5000012"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200-OK-Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/mendix/backup/250018/5000071/download",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"mendix",
+								"backup",
+								"250018",
+								"5000071",
+								"download"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "raw",
+					"header": [
+						{
+							"key": "Content-Disposition",
+							"value": "attachment;filename=\"backup.sql\""
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/octet-stream"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 30 Apr 2024 15:05:10 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "getClientByClientid",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "200-OK-Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/mendix/client/250018",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"mendix",
+								"client",
+								"250018"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 30 Apr 2024 15:03:57 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"clientData\": {\n        \"id\": \"250018\",\n        \"credentials\": \"{\\n  \\\"username\\\" : \\\"postgres123\\\",\\n  \\\"password\\\" : \\\"postgres123\\\",\\n  \\\"database\\\" : \\\"dsoifhasuo9fas70a9fu\\\",\\n  \\\"host\\\" : \\\"customer_db\\\",\\n  \\\"port\\\" : \\\"5432\\\"\\n}\",\n        \"tariff\": \"FREE\"\n    },\n    \"tariffData\": {\n        \"id\": \"1\",\n        \"name\": \"FREE\",\n        \"price\": \"0\",\n        \"description\": \"Free plan\"\n    },\n    \"backupDataList\": [\n        {\n            \"id\": \"5000069\",\n            \"status\": \"DONE\",\n            \"start_date\": \"2024-04-30T14:54:03.054\",\n            \"end_date\": \"2024-04-30T15:02:17.503\",\n            \"database_size\": \"4951594\",\n            \"backup_time\": \"494449\"\n        },\n        {\n            \"id\": \"5000070\",\n            \"status\": \"DONE\",\n            \"start_date\": \"2024-04-30T14:54:03.991\",\n            \"end_date\": \"2024-04-30T15:02:19.462\",\n            \"database_size\": \"4951594\",\n            \"backup_time\": \"495471\"\n        },\n        {\n            \"id\": \"5000071\",\n            \"status\": \"DONE\",\n            \"start_date\": \"2024-04-30T14:54:04.713\",\n            \"end_date\": \"2024-04-30T15:02:23.787\",\n            \"database_size\": \"4951594\",\n            \"backup_time\": \"499074\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "404-NotFound-Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/mendix/client/25001111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"mendix",
+								"client",
+								"25001111"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 01 May 2024 02:05:55 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"01-05-2024 02:05:54\",\n    \"errorCode\": \"MNDX_BKP_001\",\n    \"errorMessage\": \"Client not found\",\n    \"status\": 404,\n    \"clientUrl\": \"uri=/mendix/client/25001111\"\n}"
+				}
+			]
+		}
+	]
+}

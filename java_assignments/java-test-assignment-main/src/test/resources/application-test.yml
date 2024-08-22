@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:13:///databasename
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+    username: test
+    password: test
+  output:
+    ansi:
+      enabled: always
+
+minio:
+  endpoint: http://localhost:${MINIO_PORT}
+  accessKey: minioadmin
+  secretKey: minioadmin
+  bucketname: db-backups
